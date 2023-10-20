@@ -1,8 +1,13 @@
 import React from "react";
-import product from "../../Products/product";
+
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/CartSlice";
 
 const ProudPro = () => {
+  let products = useSelector((state) => state.products);
+  let dispatch = useDispatch();
+
   return (
     <div className="px-5 xl:w-[75%] xl:mx-auto my-10">
       <div className="flex flex-col gap-3">
@@ -10,7 +15,7 @@ const ProudPro = () => {
           Products we are proud of
         </h1>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-          {product.map((x) => {
+          {products.map((x) => {
             return (
               <div key={x.id} className="border-[2px] p-4">
                 <div>
@@ -24,6 +29,7 @@ const ProudPro = () => {
                   <motion.button
                     whileTap={{ scale: 0.8 }}
                     className=" mt-1 p-2 border-[2px] text-[1.1rem] font-semibold border-black"
+                    onClick={() => dispatch(addToCart({ id: x.id, products }))}
                   >
                     Add To Cart
                   </motion.button>

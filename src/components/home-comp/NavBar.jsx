@@ -5,6 +5,7 @@ import {
   AiOutlineClose,
 } from "react-icons/ai";
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -26,9 +27,11 @@ const NavBar = () => {
                   <a href="">PRODUCT PAGE</a>
                 </div>
                 <div className="flex items-center gap-7">
-                  <motion.div>
-                    <AiOutlineShoppingCart className="text-[1.7rem] sm:text-[1.8rem] lg:text-[1.8rem] xl:text-[1.9rem]" />
-                  </motion.div>
+                  <NavLink to="cart">
+                    <motion.div whileTap={{ scale: 0.8 }}>
+                      <AiOutlineShoppingCart className="text-[1.7rem] cursor-pointer sm:text-[1.8rem] lg:text-[1.8rem] xl:text-[1.9rem]" />
+                    </motion.div>
+                  </NavLink>
                   <motion.div whileTap={{ scale: 0.8 }}>
                     <AiOutlineMenu
                       onClick={handleClick}
