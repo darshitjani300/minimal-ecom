@@ -1,16 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
 
 const CartSlice = createSlice({
   name: "cart",
   initialState: [],
   reducers: {
     addToCart: (state, action) => {
-        
       let obj = action.payload.products.find((x) => x.id == action.payload.id);
       let filter = state.find((x) => x.id == action.payload.id);
       if (filter) {
-        alert("helo");
+        alert("Product is already There");
       } else {
         state.push(obj);
       }
@@ -22,7 +20,6 @@ const CartSlice = createSlice({
       state = filteredCart;
       return state;
     },
-
   },
 });
 

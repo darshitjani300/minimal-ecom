@@ -15,12 +15,14 @@ const NavBar = () => {
   return (
     <>
       {!open && (
-        <div className="shadow-md">
+        <div className="shadow-md sticky top-0 left-0 bg-white">
           <div className="px-5 py-4 md:py-3 lg:w-[95%] xl:w-[75%] mx-auto">
             <div className="flex justify-between items-center">
-              <div className="logo">
-                <img src="images/logo/logo.png" className="w-20" alt="logo" />
-              </div>
+              <NavLink to="/">
+                <div className="logo">
+                  <img src="images/logo/logo.png" className="w-20" alt="logo" />
+                </div>
+              </NavLink>
               <div className="sm:flex sm:items-center sm:gap-5">
                 <div className="hidden sm:flex sm:gap-5 sm:text-[1.1rem] lg:gap-7 lg:text-[1.1rem] 2xl:text-[1.1rem]">
                   <a href="">CATEGORIES</a>
