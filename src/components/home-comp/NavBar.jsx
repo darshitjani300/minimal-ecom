@@ -6,12 +6,16 @@ import {
 } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(!open);
   };
+
+  let cart = useSelector((state) => state.cart);
+
   return (
     <>
       {!open && (
@@ -30,8 +34,11 @@ const NavBar = () => {
                 </div>
                 <div className="flex items-center gap-7">
                   <NavLink to="cart">
-                    <motion.div whileTap={{ scale: 0.8 }}>
+                    <motion.div className="relative" whileTap={{ scale: 0.8 }}>
                       <AiOutlineShoppingCart className="text-[1.7rem] cursor-pointer sm:text-[1.8rem] lg:text-[1.8rem] xl:text-[1.9rem]" />
+                      <p className="absolute right-0 top-[-50%] translate-x-[50%] bg-red-600 px-2 rounded-[50%] text-white font-semibold">
+                        {cart.length < 1 ? "" : cart.length}
+                      </p>
                     </motion.div>
                   </NavLink>
                   <motion.div whileTap={{ scale: 0.8 }}>

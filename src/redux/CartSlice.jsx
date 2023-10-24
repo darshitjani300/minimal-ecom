@@ -20,9 +20,23 @@ const CartSlice = createSlice({
       state = filteredCart;
       return state;
     },
+
+    addQuantity: (state, action) => {
+      let obj = state.find((x) => x.id == action.payload);
+      obj.quantity++;
+      return state;
+    },
+
+    decQuantity: (state, action) => {
+      let obj = state.find((x) => x.id == action.payload);
+      obj.quantity > 1 && obj.quantity--;
+      return state;
+    },
+    
   },
 });
 
-export const { addToCart, removeCart } = CartSlice.actions;
+export const { addToCart, removeCart, addQuantity, decQuantity } =
+  CartSlice.actions;
 
 export default CartSlice.reducer;
